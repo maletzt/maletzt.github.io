@@ -446,7 +446,7 @@ var resizePizzas = function(size) {
 
   // Iterates through pizza elements on the page and changes their widths
   function changePizzaSizes(size) {
-     //moved both dx and newwidth outside the for loop. for newwidth we only need to calculate this one time not multiples like it was doing in the loop.
+     //Modified loop and moved both dx and newwidth outside the for loop. for newwidth we only need to calculate this one time not multiples like it was doing in the loop.
     //regarding the dx since all the pizzas should be the same size we should only have to do this once as well.
     var newContainer = document.querySelectorAll(".randomdPizzaContainer");
     var dx = determineDx(randomPizzasContainters[0], size);
