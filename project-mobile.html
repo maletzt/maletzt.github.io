@@ -6,11 +6,6 @@
     <meta name="description" content=" FILL ME IN ">
     <meta name="author" content=" FILL ME IN ">
     <title>Cameron Pitman: Portfolio</title>
-
-    <!-- Hmm, what is the impact of web fonts on speed? Measure it... -->
-    <!-- <link href="//fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet"> -->
-
-    <link href="css/print.css" rel="stylesheet" media = "print"><!--added media print-->
 <!-- inlined css-->
     <style>
           html {
@@ -50,19 +45,18 @@
             body { font-size: 12px;}
             header p { padding-left: 4.5em;}
           }
+          @media print {
+            * { background: transparent !important; color: black !important; text-shadow: none !important; filter:none !important; -ms-filter: none !important; }
+            a, a:visited { color: #444 !important; text-decoration: underline; }
+            a[href]:after { content: " (" attr(href) ")"; }
+            tr, img { page-break-inside: avoid; }
+            img { max-width: 100% !important; }
+            @page { margin: 0.5cm; }
+            p, h2, h3 { orphans: 3; widows: 3; }
+            h2, h3{ page-break-after: avoid; }
+          }
         </style>
-    <script>
-      (function(w,g){w['GoogleAnalyticsObject']=g;
-      w[g]=w[g]||function(){(w[g].q=w[g].q||[]).push(arguments)};w[g].l=1*new Date();})(window,'ga');
-
-      // TODO: replace with your Google Analytics profile ID.
-      ga('create', 'UA-XXXX-Y');
-      ga('send', 'pageview');
-    </script>
-    <!-- added async -->
-    <script async src="http://www.google-analytics.com/analytics.js"></script>
-    <script async src="js/perfmatters.js"></script>
-  </head>
+    </head>
 
   <body>
     <header>
@@ -89,4 +83,16 @@
       <p>&copy; Web Performance 2014 <span id="crp-stats"></span></p>
     </footer>
   </body>
+    <!-- moved to bottom-->
+  <script>
+      (function(w,g){w['GoogleAnalyticsObject']=g;
+      w[g]=w[g]||function(){(w[g].q=w[g].q||[]).push(arguments)};w[g].l=1*new Date();})(window,'ga');
+
+      // TODO: replace with your Google Analytics profile ID.
+      ga('create', 'UA-XXXX-Y');
+      ga('send', 'pageview');
+    </script>
+     <!-- added async -->
+    <script async src="http://www.google-analytics.com/analytics.js"></script>
+    <script async src="js/perfmatters.js"></script>
 </html>
