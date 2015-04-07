@@ -71,3 +71,22 @@ Feeling uninspired by the portfolio? Here's a list of cool portfolios I found af
 * <a href="http://nicoledominguez.com/portfolio/">http://nicoledominguez.com/portfolio/</a>
 * <a href="http://www.roxannecook.com/">http://www.roxannecook.com/</a>
 * <a href="http://www.84colors.com/portfolio.html">http://www.84colors.com/portfolio.html</a>
+-----------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------
+-To runt he application type http://maletzt.github.io/ in your web browser of choice
+
+-In minifying the html, js, and css you can see the changed annotated in the _dev files
+
+-Compressed images
+
+-For the index.html added https reference to the google fonts, inlined css and moved Google analytics to the end of the code, also specified height and width of images.
+
+-For project-2048, project-mobile, and project=webperf inlined css and moved Google analytics to the end of the code.
+
+-For pizza.html specified height and width of images.
+
+*main.js
+-For line 448 modified loop and moved both dx and newwidth outside the for loop. For newwidth we only need to calculate this one time not multiples like it was doing in the loop. Regarding the dx since all the pizzas should be the same size we should only have to do this once as well.
+-For line 473 the randomPizzas do not need to recalculate multiple times so pulled out the randomPizzas outside the for loop
+-For line 503 added a new variable that is used in caching of pizza images, and updated the method on line 507 to getElementsByClassName
+-For line 531 change value from 200 to 20
