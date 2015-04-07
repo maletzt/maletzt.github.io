@@ -504,11 +504,14 @@ function updatePositions() {
   frame++;
   window.performance.mark("mark_start_frame");
   var cachedScrollTop=document.body.scrollTop;  // added new variable
-  var items = document.getElementsByClassName('mover');  // Changing to getelementsByClassName is a faster access method.
+  var items = document.getElementsByClassName('mover');  // getElementsByClassName is a faster access method.
 
   for (var i = 0; i < items.length; i++) {
-    var phase = Math.sin((cachedScrollTop / 1250) + (i % 5)); // used the new variable here to cache the pizza images
-    
+    var phase = Math.sin((cachedScrollTop / 1250) + (i % 5)); // to perform caching of pizza images using the new variable
+    items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
+  }
+
+
   // User Timing API to the rescue again. Seriously, it's worth learning.
   // Super easy to create custom metrics.
   window.performance.mark("mark_end_frame");
@@ -518,7 +521,6 @@ function updatePositions() {
     logAverageFrame(timesToUpdatePosition);
   }
 }
-
 // runs updatePositions on scroll
 window.addEventListener('scroll', updatePositions);
 
@@ -537,4 +539,4 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelector("#movingPizzas1").appendChild(elem);
   }
   updatePositions();
-};
+});
