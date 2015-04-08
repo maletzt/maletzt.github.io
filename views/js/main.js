@@ -445,17 +445,20 @@ var resizePizzas = function(size) {
     return dx;
   }
 
+  // Iterates through pizza elements on the page and changes their widths
   function changePizzaSizes(size) {
-     //Modified loop and moved both dx and newwidth outside the for loop. for newwidth we only need to calculate this one time not multiples like it was doing in the loop.
-    //regarding the dx since all the pizzas should be the same size we should only have to do this once as well.
-      var randomPizzaContainers = document.querySelectorAll(".randomdPizzaContainer");
-      var dx = determineDx(randomPizzaContainers[0], size);
-      var newwidth = (randomPizzaContainers[0].offsetWidth + dx) + 'px';
-    
-    for (var i = 0; i < randomPizzaContainers.length; i++) {
-      randomPizzaContainers[i].style.width = newwidth;
+    //Created pizzaVar to only have to call querySelectorAll once in this
+    //function. Moved lines out of four loop that only needed one call to
+    //configure varibles for calculations.
+    var newPizzaContainer = document.querySelectorAll(".randomPizzaContainer");
+    var dx = determineDx(newPizzaContainer[0], size);
+    var newwidth = (newPizzaContainer[0].offsetWidth + dx) + 'px';
+
+    for (var i = 0; i < newPizzaContainer.length; i++) {
+      newPizzaContainer[i].style.width = newwidth;
+    }
   }
-}
+
   changePizzaSizes(size);
 
   // User Timing API is awesome
