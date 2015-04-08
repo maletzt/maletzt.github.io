@@ -508,7 +508,7 @@ function updatePositions() {
   var moveTotal = Math.sin(cachedScrollTop / 1250);
 
   for (var i = 0; i < items.length; i++) {
-       items[i].style.transform = 'translateX(' + 100 * moveTotal + (i % 5)) + 'px)'; //http://www.html5rocks.com/en/tutorials/speed/high-performance-animations/
+       items[i].style.transform = 'translateX(' + (100 * moveTotal + (i % 5)) + 'px)'; //http://www.html5rocks.com/en/tutorials/speed/high-performance-animations/
   }
 
 
