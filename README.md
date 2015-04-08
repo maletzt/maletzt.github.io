@@ -75,20 +75,31 @@ Feeling uninspired by the portfolio? Here's a list of cool portfolios I found af
 -----------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------
 
--To run the webpage type http://maletzt.github.io/ in your web browser of choice
+### Launching the Webpage
+
+* Option 1 is to clone it from my github account and open index.html in your web browser:
+
+[git clone](https://github.com/maletzt/maletzt.github.io.git)
+
+* Option 2 is to click on the below link that is hosted on Github Pages:
+[Maletz Optimization](http://maletzt.github.io/)
+
+### Optimization Breakdown
+
 
 -In minifying the html, js, and css you can see the changed annotated in the _dev files
 
 -Compressed images
 
--For the index.html added https reference to the google fonts, inlined css and moved Google analytics to the end of the code, also specified height and width of images.
+-For the index.html removed reference to the google fonts, inlined css and moved Google analytics to the end of the code, also specified height and width of images, and split pizzeria.jpg into two images for an icon sized one.
 
 -For project-2048, project-mobile, and project=webperf inlined css and moved Google analytics to the end of the code.
 
 -For pizza.html specified height and width of images.
 
 *main.js
--For line 448 modified loop and moved both dx and newwidth outside the for loop. For newwidth we only need to calculate this one time not multiples like it was doing in the loop. Regarding the dx since all the pizzas should be the same size we should only have to do this once as well.
+-For line 448 modified loop and moved both dx and newwidth outside the for loop. For newwidth we only need to calculate this one time not multiples like it was doing in the loop. Regarding the dx since all the pizzas should be the same size we should only have to do this once as well. Corrected console error from initial project. Updated variable names and moved var pizzabox outside the function
 -For line 473 the randomPizzas do not need to recalculate multiple times so pulled out the randomPizzas outside the for loop
--For line 503 added a new variable that is used in caching of pizza images, and updated the method on line 507 to getElementsByClassName
--For line 531 change value from 200 to 20
+-For line 503 updated function updatePositions, added two new variables, and utilized transform based on instructor feedback
+-For line 529 took instructor feedback and incorporated screen.availWidth and screen.availHeight. Also special thanks to James Roeder in helping me understand this new concept better for the code.
+-Enriched README file.
