@@ -450,12 +450,12 @@ var resizePizzas = function(size) {
     //Created pizzaVar to only have to call querySelectorAll once in this
     //function. Moved lines out of four loop that only needed one call to
     //configure varibles for calculations.
-    var newPizzaContainer = document.querySelectorAll(".randomPizzaContainer");
-    var dx = determineDx(newPizzaContainer[0], size);
-    var newwidth = (newPizzaContainer[0].offsetWidth + dx) + 'px';
+    var pizzaBox = document.querySelectorAll(".randomPizzaContainer");
+    var dx = determineDx(pizzaBox[0], size);
+    var newwidth = (pizzaBox[0].offsetWidth + dx) + 'px';
 
-    for (var i = 0; i < newPizzaContainer.length; i++) {
-      newPizzaContainer[i].style.width = newwidth;
+    for (var i = 0; i < pizzaBox.length; i++) {
+      pizzaBox[i].style.width = newwidth;
     }
   }
 
