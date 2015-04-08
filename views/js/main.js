@@ -278,7 +278,8 @@ function getNoun(y) {
   } 
 }
 
-var adjectives = ["dark", "color", "whimsical", "shiny", "noise", "apocalyptic", "insulting", "praise", "scientific"];  // types of adjectives for pizza titles
+//corrected adjective noise to noisy
+var adjectives = ["dark", "color", "whimsical", "shiny", "noisy", "apocalyptic", "insulting", "praise", "scientific"];  // types of adjectives for pizza titles
 var nouns = ["animals", "everyday", "fantasy", "gross", "horror", "jewelry", "places", "scifi"];                        // types of nouns for pizza titles
 
 // Generates random numbers for getAdj and getNoun functions and returns a new pizza name
@@ -445,18 +446,19 @@ var resizePizzas = function(size) {
   }
 
   // Iterates through pizza elements on the page and changes their widths
-  
-    function changePizzaSizes(size) {
-     //Modified loop and moved both dx and newwidth outside the for loop. for newwidth we only need to calculate this one time not multiples like it was doing in the loop.
-    //regarding the dx since all the pizzas should be the same size we should only have to do this once as well.
-      var randomPizzaContainers = document.querySelectorAll(".randomdPizzaContainer");
-      var dx = determineDx(randomPizzaContainers[0], size);
-      var newwidth = (randomPizzaContainers[0].offsetWidth + dx) + 'px';
-    
-    for (var i = 0; i < randomPizzaContainers.length; i++) {
-      randomPizzaContainers[i].style.width = newwidth;
+  function changePizzaSizes(size) {
+    //Created pizzaVar to only have to call querySelectorAll once in this
+    //function. Moved lines out of four loop that only needed one call to
+    //configure varibles for calculations.
+    var pizzaVar = document.querySelectorAll(".randomPizzaContainer");
+    var dx = determineDx(pizzaVar[0], size);
+    var newwidth = (pizzaVar[0].offsetWidth + dx) + 'px';
+
+    for (var i = 0; i < pizzaVar.length; i++) {
+      pizzaVar[i].style.width = newwidth;
+    }
   }
-}
+
   changePizzaSizes(size);
 
   // User Timing API is awesome
@@ -469,10 +471,8 @@ var resizePizzas = function(size) {
 window.performance.mark("mark_start_generating"); // collect timing data
 
 // This for-loop actually creates and appends all of the pizzas when the page loads
-//The randomPizzas do not need to recalculate multiple times so pulled out the randomPizzas outside the for loop
-var pizzasDiv = document.getElementById("randomPizzas");
-
 for (var i = 2; i < 100; i++) {
+  var pizzasDiv = document.getElementById("randomPizzas");
   pizzasDiv.appendChild(pizzaElementGenerator(i));
 }
 
@@ -503,14 +503,16 @@ function logAverageFrame(times) {   // times is the array of User Timing measure
 function updatePositions() {
   frame++;
   window.performance.mark("mark_start_frame");
-  var cachedScrollTop=document.body.scrollTop;  // added new variable
-  var items = document.getElementsByClassName('mover');  // getElementsByClassName is a faster access method.
+
+  var items = document.querySelectorAll('.mover');
+
+  //removed document.body.scrollTop from loop by creating seperate varible.
+  var scrollVar = document.body.scrollTop;
 
   for (var i = 0; i < items.length; i++) {
-    var phase = Math.sin((cachedScrollTop / 1250) + (i % 5)); // to perform caching of pizza images using the new variable
+    var phase = Math.sin((scrollVar / 1250) + (i % 5));
     items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
   }
-
 
   // User Timing API to the rescue again. Seriously, it's worth learning.
   // Super easy to create custom metrics.
@@ -521,6 +523,7 @@ function updatePositions() {
     logAverageFrame(timesToUpdatePosition);
   }
 }
+
 // runs updatePositions on scroll
 window.addEventListener('scroll', updatePositions);
 
@@ -528,6 +531,7 @@ window.addEventListener('scroll', updatePositions);
 document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var s = 256;
+  //Reduced number of pizza element from 200 to 31. (256/8cols)-1
   for (var i = 0; i < 31; i++) {
     var elem = document.createElement('img');
     elem.className = 'mover';
