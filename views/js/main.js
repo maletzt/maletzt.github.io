@@ -446,18 +446,17 @@ var resizePizzas = function(size) {
 
   // Iterates through pizza elements on the page and changes their widths
   
-    var randomPizzaContainers = document.querySelectorAll(".randomdPizzaContainer");
     function changePizzaSizes(size) {
      //Modified loop and moved both dx and newwidth outside the for loop. for newwidth we only need to calculate this one time not multiples like it was doing in the loop.
     //regarding the dx since all the pizzas should be the same size we should only have to do this once as well.
-    var dx = determineDx(randomPizzaContainers[0], size);
-    var newwidth = (randomPizzaContainers[0].offsetWidth + dx) + 'px';
+      var randomPizzaContainers = document.querySelectorAll(".randomdPizzaContainer");
+      var dx = determineDx(randomPizzaContainers[0], size);
+      var newwidth = (randomPizzaContainers[0].offsetWidth + dx) + 'px';
     
-    for (var i = 0; i = randomPizzaContainers.length; i < 1;i++) {
+    for (var i = 0; i < randomPizzaContainers.length; i++) {
       randomPizzaContainers[i].style.width = newwidth;
   }
 }
-
   changePizzaSizes(size);
 
   // User Timing API is awesome
@@ -529,7 +528,7 @@ window.addEventListener('scroll', updatePositions);
 document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var s = 256;
-  for (var i = 0; i < 20; i++) {
+  for (var i = 0; i < 31; i++) {
     var elem = document.createElement('img');
     elem.className = 'mover';
     elem.src = "images/pizza.png";
